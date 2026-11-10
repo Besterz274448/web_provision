@@ -9,6 +9,22 @@ function apiUrl(path: string) {
   return `${base.replace(/\/+$/, '')}${path}`;
 }
 
+/**
+ * Logs why a call never got an answer (refused, DNS, timeout, TLS), then returns the error to throw.
+ * The log names the address without its query and never the headers, which hold the token.
+ */
+function unreachable(url: string, error: unknown) {
+  const { origin, pathname } = new URL(url);
+  const cause = error instanceof Error ? error.cause : undefined;
+  const code =
+    cause && typeof cause === 'object' && 'code' in cause ? String(cause.code) : undefined;
+  const reason = error instanceof Error ? `${error.name}: ${error.message}` : String(error);
+  console.error(
+    `provisioning API unreachable at ${origin}${pathname}: ${reason}${code ? ` (${code})` : ''}`
+  );
+  return apiError('unreachable');
+}
+
 function serviceHeaders() {
   const token = process.env.PROVISIONING_SERVICE_TOKEN;
   if (!token) throw apiError('not_configured');
@@ -23,8 +39,8 @@ export async function apiGet<T>(path: string): Promise<T> {
   let res: Response;
   try {
     res = await fetch(url, { headers, signal: AbortSignal.timeout(TIMEOUT_MS) });
-  } catch {
-    throw apiError('unreachable');
+  } catch (error) {
+    throw unreachable(url, error);
   }
 
   if (res.status === 401) throw apiError('unauthorized');
@@ -62,8 +78,8 @@ export async function apiPost<T>(
       body: body === undefined ? undefined : JSON.stringify(body),
       signal: AbortSignal.timeout(TIMEOUT_MS)
     });
-  } catch {
-    throw apiError('unreachable');
+  } catch (error) {
+    throw unreachable(url, error);
   }
 
   if (res.status === 401) throw apiError('unauthorized');
@@ -89,8 +105,8 @@ export async function apiRevealCredentials(id: string, actor: string) {
   let res: Response;
   try {
     res = await fetch(url, { headers, signal: AbortSignal.timeout(TIMEOUT_MS) });
-  } catch {
-    throw apiError('unreachable');
+  } catch (error) {
+    throw unreachable(url, error);
   }
 
   if (res.status === 401) throw apiError('unauthorized');
