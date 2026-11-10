@@ -79,7 +79,7 @@ function ApprovePage() {
           from,
           start: ccplus
             ? {
-                order_prefix: request.order_prefix,
+                order_prefix: request.order_prefix.toUpperCase(),
                 category: request.category,
                 district: request.district,
                 sub_district: request.sub_district,

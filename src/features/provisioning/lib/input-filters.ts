@@ -34,6 +34,9 @@ export const decimalChars: InputFilter = (value) => {
 /** English letters and digits, for the order prefix. */
 export const alphanumeric: InputFilter = (value) => value.replace(/[^A-Za-z0-9]/g, '');
 
+/** An order prefix: English letters and digits, letters always upper case. */
+export const orderPrefixChars: InputFilter = (value) => alphanumeric(value).toUpperCase();
+
 /** What a username may hold: English letters, digits, dot, dash and underscore. */
 export const usernameChars: InputFilter = (value) => value.replace(/[^A-Za-z0-9._-]/g, '');
 

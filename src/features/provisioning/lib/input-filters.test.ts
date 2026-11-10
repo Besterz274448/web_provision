@@ -5,6 +5,7 @@ import {
   digitsOnly,
   filteredCaret,
   noSpaces,
+  orderPrefixChars,
   phoneChars,
   usernameChars,
   uuidChars
@@ -46,6 +47,9 @@ describe('decimalChars', () => {
 describe('text filters', () => {
   test('prefix keeps English letters and digits', () => {
     expect(alphanumeric('tn-0ก1')).toBe('tn01');
+  });
+  test('order prefix is upper case', () => {
+    expect(orderPrefixChars('tn-0ก1b')).toBe('TN01B');
   });
   test('username keeps letters, digits, dot, dash and underscore', () => {
     expect(usernameChars('admin tn01@ร้าน_.x-')).toBe('admintn01_.x-');
