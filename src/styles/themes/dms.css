@@ -1,0 +1,67 @@
+/* The DMS palette in the template's theme format. Add another theme by adding a file like this. */
+[data-theme='dms'] {
+  --background: #ffffff;
+  --foreground: #1f2937;
+  --card: #ffffff;
+  --card-foreground: #1f2937;
+  --popover: #ffffff;
+  --popover-foreground: #1f2937;
+  --primary: #2d31a6;
+  --primary-foreground: #ffffff;
+  --secondary: #eef0fb;
+  --secondary-foreground: #2d31a6;
+  --muted: #f9fafb;
+  --muted-foreground: #4b5563;
+  --accent: #eef0fb;
+  --accent-foreground: #2d31a6;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --success: #15803d;
+  --warning: #c2410c;
+  --track: #d9dcec;
+  --border: #e5e7eb;
+  --input: #d1d5db;
+  --ring: #2d3fb5;
+  --sidebar: #eef0fb;
+  --sidebar-foreground: #1f2937;
+  --sidebar-primary: #2d31a6;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #dfe3f8;
+  --sidebar-accent-foreground: #2d31a6;
+  --sidebar-border: #dfe3f8;
+  --sidebar-ring: #2d3fb5;
+  --radius: 0.625rem;
+}
+
+[data-theme='dms'].dark {
+  --background: oklch(0.2 0.02 275);
+  --foreground: oklch(0.95 0.005 275);
+  --card: oklch(0.23 0.022 275);
+  --card-foreground: oklch(0.95 0.005 275);
+  --popover: oklch(0.25 0.024 275);
+  --popover-foreground: oklch(0.95 0.005 275);
+  --primary: oklch(0.76 0.11 275);
+  --primary-foreground: oklch(0.2 0.04 275);
+  --secondary: oklch(0.3 0.04 275);
+  --secondary-foreground: oklch(0.9 0.03 275);
+  --muted: oklch(0.25 0.02 275);
+  --muted-foreground: oklch(0.76 0.015 275);
+  --accent: oklch(0.3 0.04 275);
+  --accent-foreground: oklch(0.9 0.04 275);
+  --destructive: oklch(0.72 0.17 25);
+  --destructive-foreground: oklch(0.2 0.04 25);
+  --success: oklch(0.76 0.15 150);
+  --warning: oklch(0.8 0.14 65);
+  --track: oklch(0.36 0.025 275);
+  --border: oklch(0.32 0.02 275);
+  --input: oklch(0.38 0.02 275);
+  --ring: oklch(0.76 0.11 275);
+  --sidebar: oklch(0.165 0.025 275);
+  --sidebar-foreground: oklch(0.92 0.008 275);
+  --sidebar-primary: oklch(0.76 0.11 275);
+  --sidebar-primary-foreground: oklch(0.2 0.04 275);
+  --sidebar-accent: oklch(0.27 0.04 275);
+  --sidebar-accent-foreground: oklch(0.92 0.04 275);
+  --sidebar-border: oklch(0.27 0.03 275);
+  --sidebar-ring: oklch(0.76 0.11 275);
+}
